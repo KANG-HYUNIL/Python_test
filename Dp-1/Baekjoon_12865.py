@@ -1,4 +1,5 @@
 import sys
+sys.setrecursionlimit(10**6)
 
 #평범한 배낭 12865번(백준) Dp문제
 #냅색 문제, 같은 물건을 여러 번 넣을 수 없다. 중복 X
