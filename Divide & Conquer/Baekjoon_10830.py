@@ -1,4 +1,5 @@
 import sys
+sys.setrecursionlimit(10**6)
 
 #행렬 제곱 10830번(백준) 분할 정복 문제
 
@@ -53,7 +54,15 @@ def devide(b):
         return (multiple_matrix(multiple_matrix(d, d, n), a, n))
 
 
-for i in devide(b):
+answer = devide(b) #거듭제곱 결과 
+
+#한 번 더 1000으로 나눈 나머지 계산
+for x in range(n):
+    for y in range(n):
+        answer[x][y] %= 1000
+
+#출력
+for i in answer:
     print(" ".join(list(map(str, i))))
     
 

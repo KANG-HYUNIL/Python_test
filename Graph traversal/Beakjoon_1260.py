@@ -86,7 +86,7 @@ def BFS(v) :
         for x in m_set[a] :
 
             if visited[x] == 0:
-
+        
                 visited[x] = 1
                 answer.append(x)
                 deq.append(x)
@@ -104,5 +104,4 @@ visited = [0 for _ in range(n + 1)]
 BFS(v)
 
 print(" ".join(list(map(str, answer))))
-
 
