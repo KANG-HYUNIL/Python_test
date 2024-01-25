@@ -3,15 +3,17 @@
 
 from collections import deque
 
-#시작지점은 1,1 즉 0, 0 이다
 
+
+
+#시작지점은 1,1 즉 0, 0 이다
 #N X M 받기
 n, m = list(map(int, input().split(sep=" ")))
 
 #BFS를 위한 deque, 답을 담을 answer 변수 선언
 deq = deque()
 
-
+ 
 
 answer = [0] #이동 횟수를 담을 배열
 
@@ -27,6 +29,7 @@ for i in range(n) :
 #idx에 맞게 목표 좌표 변경
 Target_n = n - 1
 Target_m = m - 1
+
 
 
 #목표 지점 도착 여부를 확인하는 변수
@@ -97,19 +100,11 @@ def BFS(x, y):
         for point in sub_ary:
             deq.append(point)
 
-dqp.append(scs)
-
+ 
+ 
 
 BFS(0, 0)
 
 print(answer[0])
-
-
-
-
-
-
-
-
 
 
