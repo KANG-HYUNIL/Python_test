@@ -19,7 +19,7 @@ for i in range(1, n):
         
         if ary[j] < ary[i]: #앞 쪽 숫자가 뒤 쪽 숫자보다 작다면
             
-            dp[i] = max(dp[i], dp[j] + 1)
+            dp[i] = max(dp[i], dp[j] - 1)
 
 
 print(max(dp))

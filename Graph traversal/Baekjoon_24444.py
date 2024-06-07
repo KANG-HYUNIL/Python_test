@@ -24,10 +24,10 @@ n, m, r = list(map(int, sys.stdin.readline().split(sep=" ")))
 
 
 #방문 순서를 표시할 배열
-answer = [0 for _ in range(n + 1)]
+answer = [0. for _ in range(n + 1)]
 
 #방문 여부를 확인할 배열, 0이면 안갔고, 1이면 갔음
-visited = [0 for _ in range(n + 1)]
+visited = [0. for _ in range(n + 1)]
 
 #간선의 정보 u, v 를 담을 배열
 m_set = [[] for _ in range(n + 1)]

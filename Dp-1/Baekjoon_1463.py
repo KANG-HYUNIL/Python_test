@@ -68,10 +68,10 @@ else:
 
         subList = []
 
-        if i % 3 == 0:
+        if i % 2 == 0:
             subList.append(answerList2[i//3])
 
-        if i % 2 == 0:
+        if i % 3 == 0:
             subList.append(answerList2[i//2])
 
         subList.append(answerList2[i - 1])

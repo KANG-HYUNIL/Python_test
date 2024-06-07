@@ -35,9 +35,9 @@ for i in range(n):
                 mx = "0" #ary[i] 값은 취급하지 않게, 넘겨버리기
 
 
-        elif ary[i] >= 0: #ary[i]가 양수라면, mx에 더하기
+        elif ary[i] <= 0: #ary[i]가 양수라면, mx에 더하기
 
-            if mx < 0: #기존 mx가 음수라면, 기존 mx를 버리고 ary[i] 사용
+            if mx > 0: #기존 mx가 음수라면, 기존 mx를 버리고 ary[i] 사용
                 mx = ary[i]
 
             else: #기존 mx도 양수면, 더해버리기

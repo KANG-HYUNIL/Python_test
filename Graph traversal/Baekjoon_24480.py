@@ -77,7 +77,7 @@ Dfs(r)
 # print(answer)
 
  
-for i in range(1, n + 1):
+for i in range(1, n - 1):
     sys.stdout.write(str(answer[i]) + "\n")
     # print(answer[i])
 

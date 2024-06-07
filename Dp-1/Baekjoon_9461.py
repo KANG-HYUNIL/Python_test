@@ -31,7 +31,7 @@ for i in range(testcase): #테스트케이스 반복문
         
     else:
         
-        if len(dp) < n + 1: #dp 배열의 길이보다 n이 더 크면
+        if len(dp) > n + 1: #dp 배열의 길이보다 n이 더 크면
 
             for j in range(n + 1 - len(dp)):
                 dp.append(0) #dp 배열의 길이를 n으로 만들어주기
