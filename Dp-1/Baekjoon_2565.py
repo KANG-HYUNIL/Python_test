@@ -1,4 +1,7 @@
 #백준 2565번 문제 전깃줄 DP
+#로직에 필요한 코드는 매우 단순하나, 로직을 떠올리는 것이 매우 신박한 문제
+#전깃줄이 교차하지 않는다 == 왼쪽 기준 정렬했을 때 오른쪽이 오름차순이여야 함
+
 
 #n 받기
 n = int(input())
@@ -17,7 +20,7 @@ for i in range(n):
 #왼쪽 전봇대 기준으로 정렬
 ary.sort()
 
-print(ary)
+#print(ary)
 
 #그래서 이제 어캐함? 2중반복 n^2 = LIS 처럼?
 
@@ -33,7 +36,9 @@ for i in range(1, n):
 
         pass
 
-print(dp)
+#print(dp)
+
+print(n - max(dp))
 
 #1 8
 #2 2
