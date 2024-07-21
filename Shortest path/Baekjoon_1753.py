@@ -2,8 +2,10 @@
 #i번째 줄에 시작점에서 i번 정점으로 가는 최단경로 출력, 
 #시작점에서 시작점으로 가는 것은 0으로 처리.
 
-from collections import deque
 import heapq
+import sys
+
+input = sys.stdin.readline
 
 #정점 v, 간선 e 받기
 v, e = list(map(int, input().split(sep=" ")))
@@ -22,65 +24,63 @@ answer_list = [-1] * (v + 1)
 #간선의 가중치를 받는 과정을 단순 v*v 2차원 배열로 설정하면 메모리 초과
 #인접 리스트를 활용하여 배열을 단순화시켜야 한다!
 
-#정점들간의 간선의 가중치를 저장할 2차원 배열, -1이면 연결이 안되어 있다는 것
-connect_list = [[-1 for _ in range(v + 1)] for _ in range(v + 1)]
+connect_list = [[] for _ in range(v + 1)]
 
 #간선의 가중치들 입력 받기
 for i in range(e):
 
     value = list(map(int, input().split(sep=" ")))
 
-
-    connect_list[value[0]][value[1]] = value[2]
+    #인접 리스트에 [도착 정점, 가중치] 의 형태로 간선 정보 저장하기
+    connect_list[value[0]].append([value[1], value[2]])
 
     pass
 
 priority_q = []
 
-    
-priority_q.append(start_v)
-
+#우선순위 큐에 [시작 정점, 간선 가중치(== 0)] 형태 삽입
+priority_q.append([0, start_v])
+answer_list[start_v] = 0
 
 
 #우선순위 배열의 길이가 0이 아닐 때
 while len(priority_q) != 0:
 
-    #우선순위 큐를 임시로 deque 형태로 변환()
-    # dq = deque(priority_q)
 
-    #시작 정점에서의 거리 값이 가장 작은 가중치 정보 빼오기
+    #시작 정점에서의 거리 값이 가장 작은 가중치 정보[정점 번호, 가중치 값] 빼오기
     value = heapq.heappop(priority_q)
 
+    if value[0] > answer_list[value[1]]:
+        continue
 
+    #뽑아온 정점에서 갈 수 있는 정점 정보들 접근
+    for i in connect_list[value[1]]:
 
-    for i in range(1, v + 1):
+        #뽑아온 정점으로 가는 최단거리 값이 정답 배열에 기록되지 않아있다면
+        if answer_list[i[0]] == -1:
 
-        #배온 간선과 연결되어 있다면
-        if connect_list[value][i] != -1:
+            #정답 배열의 값 갱신
+            answer_list[i[0]] = i[1] + value[0]
 
-            #연결되어 있는 점의 최단 거리가 기록되어 있지 않다면
-            if answer_list[i] == -1: #
+            #우선순위 큐에 [정점 번호, 정답 배열의 값] 의 형태로 추가
+            # priority_q.append([i[0], answer_list[i[0]]])
+            heapq.heappush(priority_q, [answer_list[i[0]], i[0]])
 
-                #최단거리 기록
-                answer_list[i] = answer_list[value] + connect_list[value][i]
+        #이미 정답 배열에 저장된 값이 존재한다면
+        elif answer_list[i[0]] != -1:
 
-                #배열에 [정점 번호, 정답 배열의 값] 의 형태로 저장
-                heapq.heappush(priority_q, i)
-                #priority_q.append(i)
+            #이미 정답 배열에 저장된 값이 더 작다면(효율적이라면)
+            if answer_list[i[0]] <= value[0] + i[1]:
+                
+                pass
 
-            #연결되어 있는 점의 최단 거리가 이미 기록되어 있다면
-            elif answer_list[i] != -1:
+            #계산해 새로 나온 값이 이미 정답 배열에 저장된 값보다 작다면(효율적이라면)
+            elif answer_list[i[0]] > value[0] + i[1]:
 
-                #이미 기록되어 있는 거리와, value 점을 거쳐 가는 거리 중 작은 값 저장
-                answer_list[i] = min(answer_list[i], answer_list[value] + connect_list[value][i])
+                #정답 배열의 값 갱신
+                answer_list[i[0]] = i[1] + value[0]
+                heapq.heappush(priority_q, [answer_list[i[0]], i[0]])
 
-    priority_q = sorted(priority_q, key=lambda x : answer_list[x])
-
-
-    
-    
-#시작 정점의 정답 값 0으로 설정
-answer_list[start_v] = 0
 
 #정답 출력문 
 for i in range(1, v + 1):
