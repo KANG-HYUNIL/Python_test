@@ -3,8 +3,10 @@ from collections import deque
 import sys
 import copy
 
-#3차원 행렬 이용해야 함
+sys.setrecursionlimit(10**6)
 
+#3차원 행렬 이용해야 함
+#fdasfasdfasfdasfsd
 #가로, 세로, 높이인 M, N, H 
 M, N, H = map(int, input().split())
 
