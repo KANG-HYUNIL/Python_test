@@ -217,8 +217,8 @@ def BFS():
                     temp_red.append(red_next[:])
                     temp_blue.append(blue_next[:])
 
-            print(temp_red)
-            print(temp_blue)
+            # print(temp_red)
+            # print(temp_blue)
 
                 ## direction for loop    
 
