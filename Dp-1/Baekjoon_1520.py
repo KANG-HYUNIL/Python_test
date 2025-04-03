@@ -4,7 +4,7 @@
 import sys
 from collections import deque
 import heapq
-sys.setrecursionlimit(10**6)
+sys.setrecursionlimit(10**7)
 #그래프와 DP를 결합한 문제? 그냥 그래프 탐색 문제로만 보이는데.
 #일반적인 직사각형 2차원 그래프에서, 벽 대신에 고저차를 가만해 이동해야 한다
 #그런데 최단 경로가 아니라, 목표 지점에 도달할 수 있는 모든 경우의 수를 출력하는 것이니,
@@ -14,7 +14,7 @@ sys.setrecursionlimit(10**6)
 input = sys.stdin.readline
 
 M, N = map(int, input().split()) #세로 M, 가로 N 입력 받기
-dp = [[0 for _ in range(N)] for _ in range(M)] #DP 테이블 초기화, 각 지점에 도달하는 경우의 수 저장
+dp = [[-1 for _ in range(N)] for _ in range(M)] #DP 테이블 초기화, 각 지점에 도달하는 경우의 수 저장
 graph = [list(map(int, input().split())) for _ in range(M)] #지도 입력 받기
 
 #상하좌우 이동을 위한 방향벡터
@@ -84,7 +84,7 @@ def DFS(cur_x, cur_y):
         return 1
 
     #이미 그 지점에 도달한 기록이 있다면, 그 경우의 수 값을 반환환
-    if dp[cur_y][cur_x] != 0:
+    if dp[cur_y][cur_x] != -1:
         return dp[cur_y][cur_x] #이미 도달한 경우의 수 반환
 
     cur_height = graph[cur_y][cur_x] #현재 지점의 높이
