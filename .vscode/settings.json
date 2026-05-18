@@ -1,14 +1,12 @@
 {
-    "errorLens.decorations": {
-        
 
-        "errorRange": {},
-        "warningRange": {},
-        "infoRange": {},
-        "hintRange": {}
-    },
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
 
-    
+  "errorLens.decorations": {
+    "errorRange": {},
+    "warningRange": {},
+    "infoRange": {},
+    "hintRange": {}
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
 }
 
